@@ -41,7 +41,13 @@ describe("About Applying What We Have Learnt", function() {
 
       /* solve using filter() & all() / any() */
 
-      expect(productsICanEat.length).toBe(0);
+      var mushrooms = _(products).filter(function (p) {
+        if ((!_.contains(p.ingredients, "mushrooms")) && (p.containsNuts === false)) {
+          productsICanEat.push(p.name);
+        };
+      });
+
+      expect(productsICanEat.length).toBe(1);
   });
 
   /*********************************************************************************/
@@ -82,6 +88,7 @@ describe("About Applying What We Have Learnt", function() {
     var ingredientCount = { "{ingredient name}": 0 };
 
     /* chain() together map(), flatten() and reduce() */
+
 
 
     expect(ingredientCount['mushrooms']).toBe(undefined);
